@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./lib/css/styles.css">
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <header class="header">
+      <div>
+        Patient Name:
+        <span class="banner-value" id="patient_name">..</span>
+        Gender:
+        <span class="banner-value" id="gender">..</span>
+        DOB:
+        <span class="banner-value" id="dob">..</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="main-overview">
+        <div class="small-card">
+          <div>Height</div>
+          <div class="ob-value" id="height">undefined</div>
+        </div>
+        <div class="small-card">
+          <div>Weight</div>
+          <div class="ob-value" id="weight">undefined</div>
+        </div>
+       
+      </div>
+	  
+       
+      
+
+      <div class="big-card">
+        <div class="small-card">		
+		
+          <div class="title">
+            Add glucose level: 
+          </div>
+		  <div class="small-card">
+		<!--<select id="timemeasured" class="meal-dropdown">
+			<option value="1">Before food</option>
+			<option value="2">After Food</option>
+		</select>-->
+		 <input class="glucoseLevel-box" id="glucoseLevel"  placeholder="Enter glucose level mg/dl"> 
+		  <button class="glucose-button" id="add">Add</button>
+		  <label id="message"/>
+		</div>
+		</div>
+		<div class="small-card">
+          <div>Glucose Level</div>
+          <div class="ob-value" id="currentglucoselevel">undefined</div>
+        </div>
+		<!-- <div class="small-card">
+          <div>Glucose Level - Fasting</div>
+          <div class="ob-value" id="glucosefasting">undefined</div>
+        </div>
+		 <div class="small-card">
+          <div>Glucose Level - Post Meal</div>
+          <div class="ob-value" id="glucosepostmeal">undefined</div>
+        </div>-->
+       
+		</div>
+		
+		<div class="big-card" width="100%">
+		<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+<div id="chart" width="100%"></div>
+	</div>
+	<!--<script>
+	const data = [{
+  x: ['10/1/2020', '10/2/2020', '10/3/2020','10/4/2020','10/5/2020','10/6/2020','10/7/2020','10/8/2020'],
+  y: [210, 200, 205,208,180,185,175,170],
+  type: 'line',
+  marker: {
+    color: ['#E6D72A', '#E6D72A', '#E6D72A','#E6D72A', '#E6D72A', '#E6D72A']
+  }
+}];
+
+const layout = {
+  title: 'Glucose reading for a month',
+};
+
+Plotly.newPlot('chart', data, layout);
+	</script>-->
+ 
+    </main>
+
+  <script src='./lib/js/fhir-client.js'></script>
+  <script src="./lib/js/get-data-test.js?id=1"></script>
+
+  <!-- uncomment below script and comment above script to switch for easy local testing -->
+  <!-- <script src="./lib/js/get-data-test.js"></script> -->
+</body>
+
+</html>
