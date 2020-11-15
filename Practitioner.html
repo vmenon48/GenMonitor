@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./lib/css/styles.css">
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <header class="header">
+      <div>
+        Practitioner Name: Dr. Isaac
+        <span class="banner-value" id="practioner_name"></span>
+        
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="main-overview">
+       <table style="width:100%" class="table">
+		<tr class="tr">
+		<th >Patient Name</th>
+		<th>Patient DOB</th>
+		<th>Patient's Last Sugar Reading</th>
+		<th>Date of Reading</th>
+		<th></th>
+		</tr>
+		<tr class="tr">
+		<td class="td">Kshlerin Graham</td>
+		<td class="td">1975-10-15</td>
+		<td class="td">180</td>
+		<td class="td">11/10/2020</td>
+		<td class="td"><a href="#">detail</a></td>
+		</tr>
+		<tr class="tr">
+		<td class="td">Clara Montañez</td>
+		<td class="td">1985-09-28</td>
+		<td class="td">178</td>
+		<td class="td">11/11/2020</td>
+		<td class="td"><a href="#">detail</a></td>
+		</tr>
+		<tr class="tr">
+		<td class="td">Aundre Aufderhar</td>
+		<td class="td">1986-11-28</td>
+		<td class="td">165</td>
+		<td class="td">11/10/2020</td>
+		<td class="td"><a href="#">detail</a></td>
+		</tr>
+		<tr class="tr">
+		<td class="td">Casandra Grant</td>
+		<td class="td">1985-09-28</td>
+		<td class="td">164</td>
+		<td class="td">11/12/2020</td>
+		<td class="td"><a href="#">detail</a></td>
+		</tr>
+		<tr class="tr">
+		<td class="td">Clara Montañeza</td>
+		<td class="td">1982-09-28</td>
+		<td class="td">162</td>
+		<td class="td">11/13/2020</td>
+		<td class="td"><a href="#">detail</a></td>
+		</tr>
+       
+       
+      </div>   
+      
+
+      
+
+
+ 
+    </main>
+
+  <script src='./lib/js/fhir-client.js'></script>
+  <script src="./lib/js/get-data-test.js?id=1"></script>
+
+  <!-- uncomment below script and comment above script to switch for easy local testing -->
+  <!-- <script src="./lib/js/get-data-test.js"></script> -->
+</body>
+
+</html>
