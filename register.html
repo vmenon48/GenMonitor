@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1 style=background-color:#E6D72A>Register</h1>
+    <h2 style=background-color:#E6D72A>Please enter the below details to search your details on FHIR :</h2>
+    <div>
+        <input type="text" id="txtfirstname" name="txtfirstname" value="" placeholder="Enter First name"/>
+        <input type="text" id="txtlastname" name="txtlastname" value=""   placeholder="Enter last name"/>
+        <label>Date Of Birth:</label>
+        <input type="date" id="dtdob" name="dtdob"   />
+        <input type="button" id="btsearch" name="btsearch" value="search" onclick="search()" />
+        
+        <label id="message" name="message" ></label>
+    </div>
+    <div id="cont">
+
+    </div>
+
+
+    <ul>
+      <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+      <li><%= error.message %></li>
+      <% }) %> <% } %>
+    </ul>
+    <form id="frmregister" action="/users/register" method="POST" style="display: none;">
+      
+      <div>
+        <input
+          type="text"
+          id="practitionername"
+          name="practitionername"
+          placeholder="practitioner username"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="patient username"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="patient Password"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password2"
+          name="password2"
+          placeholder="Confirm patient Password"
+          required
+        />
+      </div>
+      <input type="hidden" id="fhirid" name="fhirid" />
+      <div>
+        <input type="submit" value="Register" />
+      </div>
+
+      <a href="/users/login">Already registered? Login here</a>
+    </form>
+    <script>
+        function search()
+        {
+            var fname= document.getElementById("txtfirstname").value;
+            var lname= document.getElementById("txtlastname").value;
+            var dob = document.getElementById("dtdob").value;
+            const client = new FHIR.client({
+            serverUrl: "https://r4.smarthealthit.org",
+                      });
+                      var query = new URLSearchParams();
+                query.set("family", lname);
+                query.set("given", fname);
+                query.set("birthdate",dob);
+                client.request("Patient?" + query, {
+  pageLimit: 0,
+  flat: true
+}).then(
+  function(ob) {
+      if(ob.length >0)
+      {
+        document.getElementById("fhirid").innerText = ob[0].id;
+        document.getElementById("fhirid").value= ob[0].id;
+        document.getElementById("message").innerText ="User found. Please register below";
+        document.getElementById('frmregister').style.display="block";
+        
+      }
+      else{
+        document.getElementById("message").innerText ="User Not found";        
+        document.getElementById('frmregister').style.display="none";
+      }
+
+  })
+
+
+        }
+
+      
+
+
+    </script>
+    <script src='/fhir-client.js'></script>
+  </body>
+</html>

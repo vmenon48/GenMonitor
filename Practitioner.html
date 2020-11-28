@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <header class="header">
+      <div>
+        Practitioner Name: <%= name %>
+        <span class="banner-value"  value=<%= name %> ></span>
+        <input type=hidden id="practioner_name" value=<%= name %> />
+        <div>
+        <label id="lblMsg" style="color: darkgreen;"></label>
+      </div>
+        
+      </div>
+      <button id="btnhidedetail" onclick="hideclick()">Hide Chart</button>
+     
+      <a href="/users/logout">Logout</a>
+    </header>
+    
+    
+
+    <main class="main">
+      <div class="main-overview" id="cont">
+		
+      
+       
+      </div>   
+      
+
+      <input id="fhirIds" type="hidden" value="<%= tblids %>"
+
+      <div class="big-card" width="100%">
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    
+    <div id="chart" width="100%"></div>
+      </div>
+
+
+ 
+    </main>
+
+  <script src='/fhir-client.js'></script>
+  <script src='/get-data-practioner.js'></script>
+  <script>
+    function hideclick()
+    {
+      document.getElementById("chart").style.display="none";
+    }
+  </script>
+
+  <!-- uncomment below script and comment above script to switch for easy local testing -->
+  <!-- <script src="./lib/js/get-data-test.js"></script> -->
+</body>
+
+</html>

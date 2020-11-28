@@ -6,7 +6,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password],[type=username] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -127,34 +127,72 @@ span.psw {
 </head>
 <body>
 
-<h2>Gestational Diabetic Monitor Login Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-<div id="id01" class="modal">
+<h2 style=background-color:#E6D72A>Gestational Diabetic Monitor Login Form</h2>
   
-  <form class="modal-content animate"  >
-   
+  Check the checkbox if you are a doctor: <input type="checkbox" id="isdoctor" onclick="hideForm()" >
+  <form action="/users/login" method="POST" class="modal-content animate" id="patientForm" >   
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" value="test" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" value="test" required>
+    <div class="container">      
+        <div>
+          <input
+            type="username"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <input type=hidden id="isdoc" name="isdoc" value="false" />
+       
         
-      <button type="submit" onclick="window.open ('index.html')">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+        <div>
+          <input type="submit" value="Login" />
+        </div>
+        
+      
     </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
-    </div>
+   
   </form>
-</div>
+  <form action="/practitioner/login" method="POST" style="display: none;" class="modal-content animate" id="practitionerForm" >   
+
+    <div class="container">      
+        <div>
+          <input
+            type="username"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>  
+        <input type=hidden id="isdoc" name="isdoc" value="true" />      
+        <div>
+          <input type="submit" value="Login" />
+        </div>
+
+        <a href="/users/register">Register patients</a>
+    </div>
+   
+  </form>
+
 
 <script>
 //window.open ('index.html','_self',false)
@@ -170,6 +208,26 @@ if (event.target == modal) {
 	
 }
 </script>
+<script>
+  function hideForm()
+  {
+    var checkBox = document.getElementById("isdoctor");
+    if(checkBox.checked ==true)
+    {
+      document.getElementById('patientForm').style.display="none";
+      document.getElementById('practitionerForm').style.display="block";
+    }
+    else
+    {
+      document.getElementById('patientForm').style.display="block";
+      document.getElementById('practitionerForm').style.display="none";
+    }
+  }
+  
+
+ 
+ </script> 
+
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="./lib/css/styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -17,7 +17,9 @@
         DOB:
         <span class="banner-value" id="dob">..</span>
       </div>
+      <a href="/users/logout">Logout</a>
     </header>
+    
 
     <main class="main">
       <div class="main-overview">
@@ -70,7 +72,8 @@
 		<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 
 <div id="chart" width="100%"></div>
-	</div>
+  </div>
+  <input type="hidden" id="fhirid" value=<%= user %> >
 	<!--<script>
 	const data = [{
   x: ['10/1/2020', '10/2/2020', '10/3/2020','10/4/2020','10/5/2020','10/6/2020','10/7/2020','10/8/2020'],
@@ -90,8 +93,8 @@ Plotly.newPlot('chart', data, layout);
  
     </main>
 
-  <script src='./lib/js/fhir-client.js'></script>
-  <script src="./lib/js/get-data-test.js?id=1"></script>
+  <script src='/fhir-client.js'></script>
+  <script src="/get-data-test.js?id=1"></script>
 
   <!-- uncomment below script and comment above script to switch for easy local testing -->
   <!-- <script src="./lib/js/get-data-test.js"></script> -->
